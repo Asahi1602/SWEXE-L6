@@ -4,6 +4,11 @@
  <p>
      <%= e.message %>
      <%= User.find(e.user_id).uid %>
+     <% if e.likes.empty? %>
+        <%= link_to '♡', likes_path(tweet_id: e.id), method: :post %>
+     <% else %>
+        <%= link_to '♥', like_path(e), method: :delete %>
+     <% end %>
      <%= link_to '削除', tweet_path(e), method: :delete %>
  </p>
 <% end %>
